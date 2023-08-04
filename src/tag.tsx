@@ -1,24 +1,30 @@
 import React from "react";
-import cc from "./classnames";
+
+export interface TagClassNames {
+  container?: string;
+  text?: string;
+  removeButton?: string;
+}
 
 interface TagProps {
   text: string;
   remove: any;
   disabled?: boolean;
-  className?: string;
+  classNames?: TagClassNames;
 }
 
-export default function Tag({ text, remove, disabled, className }: TagProps) {
-  const handleOnRemove = e => {
+export default function Tag({ text, remove, disabled, classNames }: TagProps) {
+  const handleOnRemove = (e) => {
     e.stopPropagation();
     remove(text);
   };
 
   return (
-    <span className={cc("rti--tag", className)}>
-      <span>{text}</span>
+    <span className={classNames?.container}>
+      <span className={classNames?.text}>{text}</span>
       {!disabled && (
         <button
+          className={classNames?.removeButton}
           type="button"
           onClick={handleOnRemove}
           aria-label={`remove ${text}`}

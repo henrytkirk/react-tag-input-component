@@ -1,7 +1,7 @@
 {
   "name": "@henrytkirk/react-tag-input-component",
   "description": "Forked react-tag-input-component that's headless",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "license": "MIT",
   "author": "Henry T. Kirk",
   "repository": "https://github.com/henrytkirk/react-tag-input-component",

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDidUpdateEffect } from "./use-did-update-effect";
 
-import Tag from "./tag";
+import Tag, { TagClassNames } from "./tag";
 
 export interface TagsInputProps {
   name?: string;
@@ -20,7 +20,7 @@ export interface TagsInputProps {
   classNames?: {
     container?: string;
     input?: string;
-    tag?: string;
+    tag?: TagClassNames;
   };
 }
 
@@ -92,7 +92,7 @@ export const TagsInput = ({
       {tags.map((tag) => (
         <Tag
           key={tag}
-          className={classNames?.tag}
+          classNames={classNames?.tag}
           text={tag}
           remove={onTagRemove}
           disabled={disabled}
