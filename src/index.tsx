@@ -1,9 +1,6 @@
-//import "./styles.css";
-
 import React, { useState } from "react";
 import { useDidUpdateEffect } from "./use-did-update-effect";
 
-import cc from "./classnames";
 import Tag from "./tag";
 
 export interface TagsInputProps {
@@ -21,6 +18,7 @@ export interface TagsInputProps {
   beforeAddValidate?: (tag: string, existingTags: string[]) => boolean;
   onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   classNames?: {
+    container?: string;
     input?: string;
     tag?: string;
   };
@@ -56,7 +54,7 @@ export const TagsInput = ({
     }
   }, [value]);
 
-  const handleOnKeyUp = e => {
+  const handleOnKeyUp = (e) => {
     e.stopPropagation();
 
     const text = e.target.value;
@@ -84,14 +82,14 @@ export const TagsInput = ({
     }
   };
 
-  const onTagRemove = text => {
-    setTags(tags.filter(tag => tag !== text));
+  const onTagRemove = (text) => {
+    setTags(tags.filter((tag) => tag !== text));
     onRemoved && onRemoved(text);
   };
 
   return (
-    <div aria-labelledby={name} className="rti--container">
-      {tags.map(tag => (
+    <div aria-labelledby={name} className={classNames?.container}>
+      {tags.map((tag) => (
         <Tag
           key={tag}
           className={classNames?.tag}
@@ -102,7 +100,7 @@ export const TagsInput = ({
       ))}
 
       <input
-        className={cc("rti--input", classNames?.input)}
+        className={classNames?.input}
         type="text"
         name={name}
         placeholder={placeHolder}
